@@ -18,7 +18,7 @@ parameters: # parameters are shown up in ADO UI in a build queue time
 variables:
   system.debug: ${{ parameters.debug }}
 
-  BuildSolution: $(Build.SourcesDirectory)/kaalsaas.Arm.Parameters.sln
+  BuildSolution: $(Build.SourcesDirectory)/Alwin.CLI.sln
   BuildConfiguration: Release
   TargetFramework: net5.0
 
