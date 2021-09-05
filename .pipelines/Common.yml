@@ -1,0 +1,49 @@
+
+# Based off https://github.com/Azure/bicep/blob/main/.pipelines/Common.yml
+stages:
+- stage: build
+  jobs:
+  - job: windows
+    pool:
+      type: windows  # read more about custom job pool types at https://aka.ms/obpipelines/yaml/jobs
+    
+    variables:
+      ob_outputDirectory: '$(Build.SourcesDirectory)/out'
+    steps:
+    - template: BuildCli.yml
+      parameters:
+        rid: win-x64
+  
+  - job: linux
+    pool:
+      type: linux  # read more about custom job pool types at https://aka.ms/obpipelines/yaml/jobs
+    
+    variables:
+      ob_outputDirectory: '$(Build.SourcesDirectory)/out' # this directory is uploaded to pipeline artifacts, reddog and cloudvault. More info at https://aka.ms/obpipelines/artifacts
+
+    steps:
+    - template: BuildCli.yml
+      parameters:
+        rid: linux-x64
+
+  - job: linux_musl
+    pool:
+      type: linux  # read more about custom job pool types at https://aka.ms/obpipelines/yaml/jobs
+    
+    variables:
+      ob_outputDirectory: '$(Build.SourcesDirectory)/out' # this directory is uploaded to pipeline artifacts, reddog and cloudvault. More info at https://aka.ms/obpipelines/artifacts
+    steps:
+    - template: BuildCli.yml
+      parameters:
+        rid: linux-musl-x64
+
+  - job: osx
+    pool:
+      type: linux  # read more about custom job pool types at https://aka.ms/obpipelines/yaml/jobs
+    
+    variables:
+      ob_outputDirectory: '$(Build.SourcesDirectory)/out' # this directory is uploaded to pipeline artifacts, reddog and cloudvault. More info at https://aka.ms/obpipelines/artifacts
+    steps:
+    - template: BuildCli.yml
+      parameters:
+        rid: osx-x64

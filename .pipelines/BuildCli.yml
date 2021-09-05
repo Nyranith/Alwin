@@ -1,0 +1,57 @@
+parameters:
+  - name: rid
+    type: string
+
+steps:
+  - task: UseDotNet@2
+    displayName: Setup .NET Core
+    continueOnError: true
+    inputs:
+      packageType: "sdk"
+      useGlobalJson: true
+      performMultiLevelLookup: true
+
+  - task: DotNetCoreCLI@2
+    displayName: Build
+    inputs:
+      command: build
+      projects: $(BuildSolution)
+      arguments: "--configuration $(BuildConfiguration)"
+
+  - task: DotNetCoreCLI@2
+    displayName: Test
+    inputs:
+      command: "test"
+      projects: $(BuildSolution)
+      arguments: '--configuration $(BuildConfiguration) --logger trx --blame --collect:"XPlat Code Coverage" --results-directory $(Build.SourcesDirectory)/TestResults/'
+      publishTestResults: false
+
+  - task: PublishTestResults@2
+    displayName: Publish Test Results
+    inputs:
+      testResultsFormat: VSTest
+      testResultsFiles: "$(Build.SourcesDirectory)/TestResults/**/*.trx"
+      failTaskOnFailedTests: true
+
+  - task: DotNetCoreCLI@2
+    displayName: Publish Arm Parameters CLI
+    inputs:
+      command: "publish"
+      publishWebProjects: false
+      projects: ./src/Alwin.CLI/ALwin.CLI.csproj
+      arguments: "--configuration $(BuildConfiguration) --self-contained true -p:PublishTrimmed=true -p:PublishSingleFile=true -r ${{ parameters.rid }}"
+      zipAfterPublish: false
+
+  - task: CopyFiles@2
+    displayName: Copy to output
+    inputs:
+      sourceFolder: "$(Build.SourcesDirectory)/src/Alwin.CLI/bin/$(BuildConfiguration)/$(TargetFramework)/${{ parameters.rid }}/publish/"
+      contents: |
+        **
+        !**/*.pdb
+      targetFolder: "$(Build.SourcesDirectory)/out/Alwin.CLI-$(BuildConfiguration)-${{ parameters.rid }}/"
+
+  - task: PublishBuildArtifacts@1
+    inputs:
+      pathToPublish: "$(Build.SourcesDirectory)/out/Alwin.CLI-$(BuildConfiguration)-${{ parameters.rid }}/"
+      artifactName: "${{ parameters.rid }}"
