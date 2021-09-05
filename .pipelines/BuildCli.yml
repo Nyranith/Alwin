@@ -38,7 +38,7 @@ steps:
     inputs:
       command: "publish"
       publishWebProjects: false
-      projects: ./src/Alwin.CLI/ALwin.CLI.csproj
+      projects: ./src/Alwin.CLI/Alwin.CLI.csproj
       arguments: "--configuration $(BuildConfiguration) --self-contained true -p:PublishTrimmed=true -p:PublishSingleFile=true -r ${{ parameters.rid }}"
       zipAfterPublish: false
 
