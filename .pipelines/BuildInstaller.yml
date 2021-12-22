@@ -1,10 +1,10 @@
 parameters:
   - name: projectIdentifier
     type: string
-    value: "cli"
+    default: "cli"
   - name: projectPath
     type: string
-    value: "**/*.vdproj"
+    default: "**/*.vdproj"
 
 steps:
   - task: UseDotNet@2
