@@ -1,7 +1,7 @@
 parameters:
   - name: projectIdentifier
     type: string
-    value: cli
+    value: "cli"
   - name: projectPath
     type: string
     value: "**/*.vdproj"
