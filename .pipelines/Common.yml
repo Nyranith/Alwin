@@ -1,58 +1,57 @@
-
 # Based off https://github.com/Azure/bicep/blob/main/.pipelines/Common.yml
 stages:
-- stage: build
-  jobs:
-  - job: windows
-    pool:
-      type: windows  # read more about custom job pool types at https://aka.ms/obpipelines/yaml/jobs
-    
-    variables:
-      ob_outputDirectory: '$(Build.SourcesDirectory)/out'
-    steps:
-    - template: BuildCli.yml
-      parameters:
-        rid: win-x64
-  
-  - job: linux
-    pool:
-      type: linux
-    
-    variables:
-      ob_outputDirectory: '$(Build.SourcesDirectory)/out' 
+  - stage: build
+    jobs:
+      - job: windows
+        pool:
+          type: windows # read more about custom job pool types at https://aka.ms/obpipelines/yaml/jobs
 
-    steps:
-    - template: BuildCli.yml
-      parameters:
-        rid: linux-x64
+        variables:
+          ob_outputDirectory: "$(Build.SourcesDirectory)/out"
+        steps:
+          - template: BuildCli.yml
+            parameters:
+              rid: win-x64
 
-  - job: linux_musl
-    pool:
-      type: linux 
-    
-    variables:
-      ob_outputDirectory: '$(Build.SourcesDirectory)/out'
-    steps:
-    - template: BuildCli.yml
-      parameters:
-        rid: linux-musl-x64
+      - job: linux
+        pool:
+          type: linux
 
-  - job: osx
-    pool:
-      type: linux
-    
-    variables:
-      ob_outputDirectory: '$(Build.SourcesDirectory)/out' 
-    steps:
-    - template: BuildCli.yml
-      parameters:
-        rid: osx-x64
+        variables:
+          ob_outputDirectory: "$(Build.SourcesDirectory)/out"
 
-- job: cli
-    pool:
-      type: windows 
-    
-    variables:
-      ob_outputDirectory: '$(Build.SourcesDirectory)/out' 
-    steps:
-    - template: BuildInstaller.yml
+        steps:
+          - template: BuildCli.yml
+            parameters:
+              rid: linux-x64
+
+      - job: linux_musl
+        pool:
+          type: linux
+
+        variables:
+          ob_outputDirectory: "$(Build.SourcesDirectory)/out"
+        steps:
+          - template: BuildCli.yml
+            parameters:
+              rid: linux-musl-x64
+
+      - job: osx
+        pool:
+          type: linux
+
+        variables:
+          ob_outputDirectory: "$(Build.SourcesDirectory)/out"
+        steps:
+          - template: BuildCli.yml
+            parameters:
+              rid: osx-x64
+
+      - job: cli
+        pool:
+          type: windows
+
+        variables:
+          ob_outputDirectory: "$(Build.SourcesDirectory)/out"
+        steps:
+          - template: BuildInstaller.yml
