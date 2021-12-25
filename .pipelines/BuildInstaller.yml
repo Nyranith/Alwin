@@ -17,20 +17,20 @@ steps:
 
   - task: NuGetCommand@2
     inputs:
-      command: 'restore'
-      restoreSolution: '**/*.sln'
-      feedsToUse: 'select'
+      command: "restore"
+      restoreSolution: "**/*.sln"
+      feedsToUse: "select"
 
   - task: MSBuild@1
     inputs:
-      solution: '**/*.sln'
-      configuration: '$(BuildConfiguration)'
+      solution: "**/*.sln"
+      configuration: "$(BuildConfiguration)"
 
- - task: MSBuild@1
+  - task: MSBuild@1
     inputs:
       solution: ${{ parameters.projectPath }}
-      configuration: '$(BuildConfiguration)'
-      msbuildArguments: 'OutputPath $(Build.ArtifactStagingDirectory)'
+      configuration: "$(BuildConfiguration)"
+      msbuildArguments: "OutputPath $(Build.ArtifactStagingDirectory)"
 
   - task: CopyFiles@2
     displayName: Copy to output
