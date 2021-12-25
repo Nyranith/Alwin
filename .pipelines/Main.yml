@@ -1,5 +1,5 @@
 #################################################################################
-# Based off : https://github.com/Azure/bicep/blob/main/.pipelines/OneBranch.Official.yml 
+# Based off : https://github.com/Azure/bicep/blob/main/.pipelines/OneBranch.Official.yml
 #################################################################################
 
 # https://aka.ms/obpipelines/triggers
@@ -7,13 +7,13 @@ trigger:
   batch: true
   branches:
     include:
-      - master
+      - main
 
 parameters: # parameters are shown up in ADO UI in a build queue time
-- name: 'debug'
-  displayName: 'Enable debug output'
-  type: boolean
-  default: false
+  - name: "debug"
+    displayName: "Enable debug output"
+    type: boolean
+    default: false
 
 variables:
   system.debug: ${{ parameters.debug }}
