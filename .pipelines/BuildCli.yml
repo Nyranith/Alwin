@@ -1,6 +1,9 @@
 parameters:
   - name: rid
     type: string
+  - name: projects
+    type: string
+    default: " **/*.csproj"
 
 steps:
   - task: UseDotNet@2
@@ -15,14 +18,14 @@ steps:
     displayName: Build
     inputs:
       command: build
-      projects: $(BuildSolution)
+      projects: ${{ parameters.projects }}
       arguments: "--configuration $(BuildConfiguration)"
 
   - task: DotNetCoreCLI@2
     displayName: Test
     inputs:
       command: "test"
-      projects: $(BuildSolution)
+      projects: ${{ parameters.projects }}
       arguments: '--configuration $(BuildConfiguration) --logger trx --blame --collect:"XPlat Code Coverage" --results-directory $(Build.SourcesDirectory)/TestResults/'
       publishTestResults: false
 

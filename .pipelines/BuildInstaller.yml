@@ -15,18 +15,22 @@ steps:
       useGlobalJson: true
       performMultiLevelLookup: true
 
-  - task: DotNetCoreCLI@2
-    displayName: Build
-    inputs:
-      command: build
-      projects: $(BuildSolution)
-      arguments: "--configuration $(BuildConfiguration) "
+- task: NuGetCommand@2
+  inputs:
+    command: 'restore'
+    restoreSolution: '**/*.sln'
+    feedsToUse: 'select'
 
-  - task: DotNetCoreCLI@2
+  - task: MSBuild@1
     inputs:
-      command: "build"
-      projects: ${{ parameters.projectPath }}
-      arguments: "--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)"
+      solution: '**/*.sln'
+      configuration: '$(BuildConfiguration)'
+
+ - task: MSBuild@1
+    inputs:
+      solution: ${{ parameters.projectPath }}
+      configuration: '$(BuildConfiguration)'
+      msbuildArguments: 'OutputPath $(Build.ArtifactStagingDirectory)'
 
   - task: CopyFiles@2
     displayName: Copy to output
