@@ -19,10 +19,10 @@ steps:
       useGlobalJson: true
       performMultiLevelLookup: true
 
-  - task: NuGetCommand@2
+  - task: DotNetCoreCLI@2
     inputs:
       command: "restore"
-      restoreSolution: "**/*.sln"
+      projects: "**/*.sln"
       feedsToUse: "select"
 
   - task: MSBuild@1
