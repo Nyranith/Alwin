@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Reflection;
+using Alwin.CLI.Commands;
 using Alwin.CLI.Logging;
 using McMaster.Extensions.CommandLineUtils;
 using Microsoft.Extensions.Logging;
@@ -12,7 +13,7 @@ namespace Alwin.CLI
         Name = "arm",
         FullName = "Alwin code toolset")]
     [VersionOptionFromMember(MemberName = nameof(GetVersion))]
-    //[Subcommand(typeof(CreateArmParametersCommands))]
+    [Subcommand(typeof(GenerateSqlCommand))]
     public class Program
     {
         private readonly TextWriter _outputWriter;

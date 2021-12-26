@@ -39,7 +39,7 @@ namespace Alwin.CLI.Test
             _output.WriteLine(_out);
 
             _out.Should().NotBeEmpty();
-            _out.Should().StartWith("Create arm parameters file from arm files.");
+            _out.Should().StartWith("Alwin code toolset");
         }
 
     }
