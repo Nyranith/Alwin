@@ -3,10 +3,10 @@ parameters:
     type: string
   - name: projects
     type: string
-    default: " **/*.csproj"
+    default: "**/*.csproj"
   - name: packageVersion
     type: string
-    default: "5.*"
+    default: "5.x"
 
 steps:
   - task: UseDotNet@2
