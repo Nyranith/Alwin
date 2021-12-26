@@ -4,6 +4,9 @@ parameters:
   - name: projects
     type: string
     default: " **/*.csproj"
+  - name: packageVersion
+    type: string
+    default: "5.*"
 
 steps:
   - task: UseDotNet@2
@@ -11,6 +14,7 @@ steps:
     continueOnError: true
     inputs:
       packageType: "sdk"
+      version: ${{ parameters.packageVersion }}
       useGlobalJson: true
       performMultiLevelLookup: true
 
