@@ -31,10 +31,12 @@ steps:
       projects: "**/*.csproj"
       feedsToUse: "select"
 
-  - task: MSBuild@1
+  - task: DotNetCoreCLI@2
+    displayName: Build
     inputs:
-      solution: "**/*.sln"
-      configuration: "$(BuildConfiguration)"
+      command: build
+      projects: "**/*.csproj"
+      arguments: "--configuration $(BuildConfiguration)"
 
   - task: MSBuild@1
     inputs:
