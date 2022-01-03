@@ -47,11 +47,11 @@ stages:
             parameters:
               rid: osx-x64
 
-      - job: cli
-        pool:
-          type: windows
+      #- job: cli
+      #  pool:
+      #    type: windows
 
-        variables:
-          ob_outputDirectory: "$(Build.SourcesDirectory)/out"
-        steps:
-          - template: BuildInstaller.yml
+        #variables:
+        #  ob_outputDirectory: "$(Build.SourcesDirectory)/out"
+        #steps:
+        #  - template: BuildInstaller.yml
