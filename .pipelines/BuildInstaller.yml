@@ -4,7 +4,7 @@ parameters:
     default: "cli"
   - name: projectPath
     type: string
-    default: "**/*.vdproj"
+    default: "$(Build.SourcesDirectory)/src/Alwin.Installer/Alwin.Installer.vdproj"
   - name: packageVersion
     type: string
     default: "5.x"
