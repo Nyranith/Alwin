@@ -42,7 +42,7 @@ steps:
     inputs:
       solution: ${{ parameters.projectPath }}
       configuration: "$(BuildConfiguration)"
-      msbuildArguments: "-p:OutputPath $(Build.ArtifactStagingDirectory)"
+      msbuildArguments: "OutputPath $(Build.ArtifactStagingDirectory)"
 
   - task: CopyFiles@2
     displayName: Copy to output
