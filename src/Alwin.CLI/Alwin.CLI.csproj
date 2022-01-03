@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="McMaster.Extensions.CommandLineUtils" Version="3.1.0" />
+    <PackageReference Include="McMaster.Extensions.CommandLineUtils" Version="4.0.0" />
     <PackageReference Include="Microsoft.Extensions.Logging" Version="5.0.0" />
     <PackageReference Include="Microsoft.Extensions.Logging.Configuration" Version="5.0.0" />
     <PackageReference Include="SimpleInjector" Version="5.3.0" />
@@ -15,6 +15,11 @@
 
   <ItemGroup>
     <Folder Include="Logging\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Alwin.CLI.Common\Alwin.CLI.Common.csproj" />
+    <ProjectReference Include="..\Alwin.CommandLineUtils.Extensions\Alwin.CommandLineUtils.Extensions.csproj" />
   </ItemGroup>
 
 </Project>

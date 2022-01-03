@@ -3,6 +3,7 @@ using System.IO;
 using System.Reflection;
 using Alwin.CLI.Commands;
 using Alwin.CLI.Logging;
+using Alwin.CommandLineUtils.Extensions;
 using McMaster.Extensions.CommandLineUtils;
 using Microsoft.Extensions.Logging;
 using SimpleInjector;
@@ -51,7 +52,6 @@ namespace Alwin.CLI
 
                 _.Register(typeof(ILogger<>), typeof(ParameterConsoleLogger<>));
                 _.Register(typeof(ILogger), typeof(ParameterConsoleLogger));
-
 
             });
         }

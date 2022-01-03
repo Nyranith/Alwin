@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Alwin.CLI": {
+      "commandName": "Project",
+      "commandLineArgs": "generate-sql"
+    }
+  }
+}
