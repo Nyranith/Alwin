@@ -27,7 +27,7 @@ variables:
   projectName: "Alwin"
 
 stages:
-  - template: jobs/buildCli.yml@pipelines
+  - template: buildCli.yml@pipelines
     parameters:
       projectName: ${{ variables.projectName }}
       cliLocation: ${{ variables.cliLocation }}
