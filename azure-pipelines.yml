@@ -17,8 +17,10 @@ variables:
   cliLocation: "./src/Alwin/Alwin.csproj"
   baseFolderName: "kaalsaas.pipelines"
   projectName: "Alwin"
+  
+steps:
+  - checkout: self
 
-stages:
   - template: ${{ variables.baseFolderName }}/buildCli.yml
     parameters:
       baseFolderName: ${{ variables.baseFolderName }}
