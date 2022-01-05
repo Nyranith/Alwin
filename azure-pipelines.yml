@@ -1,0 +1,26 @@
+trigger:
+  batch: true
+  branches:
+    include:
+      - master
+
+parameters:
+  - name: "debug"
+    displayName: "Enable debug output"
+    type: boolean
+    default: false
+
+variables:
+  system.debug: ${{ parameters.debug }}
+  BuildConfiguration: Release
+  TargetFramework: net5.0
+  cliLocation: "./src/Alwin/Alwin.csproj"
+  baseFolderName: "kaalsaas.pipelines"
+  projectName: "Alwin"
+
+stages:
+  - template: ${{ variables.baseFolderName }}/buildCli.yml
+    parameters:
+      baseFolderName: ${{ variables.baseFolderName }}
+      projectName: ${{ variables.projectName }}
+      cliLocation: ${{ variables.cliLocation }}
