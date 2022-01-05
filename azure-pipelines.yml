@@ -1,8 +1,16 @@
+
 trigger:
   batch: true
   branches:
     include:
       - master
+
+resources:
+  repositories:
+    - repository: pipelines
+      name: kaalsaas/kaalsaas.pipelines
+      type: git
+      ref: main
 
 parameters:
   - name: "debug"
@@ -17,11 +25,9 @@ variables:
   cliLocation: "./src/Alwin/Alwin.csproj"
   baseFolderName: "kaalsaas.pipelines"
   projectName: "Alwin"
-  
-steps:
-  - checkout: self
 
-  - template: ${{ variables.baseFolderName }}/buildCli.yml
+stages:
+  - template: jobs/buildCli.yml@pipelines
     parameters:
       baseFolderName: ${{ variables.baseFolderName }}
       projectName: ${{ variables.projectName }}
