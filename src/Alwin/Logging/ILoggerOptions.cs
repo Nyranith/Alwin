@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using Microsoft.Extensions.Logging;
 
-namespace Alwin.CLI.Logging
+namespace Alwin.Logging
 {
     public interface ILoggerOptions
     {

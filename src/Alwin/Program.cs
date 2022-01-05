@@ -1,14 +1,13 @@
 ﻿using System;
 using System.IO;
 using System.Reflection;
-using Alwin.CLI.Commands;
-using Alwin.CLI.Logging;
-using Alwin.CommandLineUtils.Extensions;
+using Alwin.Commands;
+using Alwin.Logging;
 using McMaster.Extensions.CommandLineUtils;
 using Microsoft.Extensions.Logging;
 using SimpleInjector;
 
-namespace Alwin.CLI
+namespace Alwin
 {
     [Command(
         Name = "arm",

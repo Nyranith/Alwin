@@ -2,10 +2,24 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
+	<OutputType>Exe</OutputType>
+	<PackAsTool>true</PackAsTool>
+	<PackageId>alwin</PackageId>
+	<ToolCommandName>alwin</ToolCommandName>
+	<Description>A set of stuff that makes your day easier.</Description>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+	<PackageReference Include="McMaster.Extensions.CommandLineUtils" Version="4.0.0" />
+	<PackageReference Include="Microsoft.Extensions.Logging" Version="5.0.0" />
+	<PackageReference Include="Microsoft.Extensions.Logging.Configuration" Version="5.0.0" />
+	<PackageReference Include="SimpleInjector" Version="5.3.0" />
+	<PackageReference Include="SimpleInjector.Integration.ServiceCollection" Version="5.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Alwin.CommandLineUtils.Extensions\Alwin.CommandLineUtils.Extensions.csproj" />
   </ItemGroup>
 
 </Project>

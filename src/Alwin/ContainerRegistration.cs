@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SimpleInjector;
 
-namespace Alwin.CLI
+namespace Alwin
 {
     public static class ContainerRegistration
     {

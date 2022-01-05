@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Alwin.CLI
+namespace Alwin
 {
     [Flags]
     enum ExitCodes

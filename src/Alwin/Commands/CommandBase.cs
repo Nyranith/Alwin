@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Alwin.CLI.Commands
+namespace Alwin.Commands
 {
     [HelpOption]
 

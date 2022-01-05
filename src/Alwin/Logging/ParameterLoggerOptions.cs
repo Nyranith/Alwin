@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 
-namespace Alwin.CLI.Logging
+namespace Alwin.Logging
 {
     public class LoggerLoggerOptions : ILoggerOptions
     {

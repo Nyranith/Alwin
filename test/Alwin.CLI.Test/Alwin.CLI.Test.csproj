@@ -21,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Alwin.CLI\Alwin.CLI.csproj" />
+    <ProjectReference Include="..\..\src\Alwin\Alwin.csproj" />
     <ProjectReference Include="..\Alwin.CLI.Test.Lib\Alwin.CLI.Test.Lib.csproj" />
   </ItemGroup>
 

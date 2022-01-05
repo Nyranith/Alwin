@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Alwin.CLI.Logging
+namespace Alwin.Logging
 {
     public static class ParameterLoggerProviderExtension
     {
