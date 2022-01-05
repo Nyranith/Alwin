@@ -29,6 +29,5 @@ variables:
 stages:
   - template: jobs/buildCli.yml@pipelines
     parameters:
-      baseFolderName: ${{ variables.baseFolderName }}
       projectName: ${{ variables.projectName }}
       cliLocation: ${{ variables.cliLocation }}
