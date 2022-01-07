@@ -1,3 +1,0 @@
-[submodule "kaalsaas.pipelines"]
-	path = kaalsaas.pipelines
-	url = https://kaalsaas.visualstudio.com/kaalsaas/_git/kaalsaas.pipelines
