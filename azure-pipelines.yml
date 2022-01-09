@@ -86,8 +86,6 @@ stages:
                     packageVersions:
                       - "2.x"
                       - "5.x"
-                      - "2.0.x"
-                      - "2.1.x"
                     projectsToPack:
                       - "$(Build.SourcesDirectory)/src/Alwin.Common/Alwin.Common.csproj"
                       - "$(Build.SourcesDirectory)/src/Alwin.Tokenizer/Alwin.Tokenizer.csproj"
