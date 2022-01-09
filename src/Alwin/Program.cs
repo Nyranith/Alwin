@@ -2,6 +2,8 @@
 using System.IO;
 using System.Reflection;
 using Alwin.Commands;
+using Alwin.Database.Formatters;
+using Alwin.Database.Generation;
 using Alwin.Logging;
 using McMaster.Extensions.CommandLineUtils;
 using Microsoft.Extensions.Logging;
@@ -51,6 +53,11 @@ namespace Alwin
 
                 _.Register(typeof(ILogger<>), typeof(ParameterConsoleLogger<>));
                 _.Register(typeof(ILogger), typeof(ParameterConsoleLogger));
+
+
+                _.Register(typeof(SQLGenerator));
+                _.Register(typeof(SQLFormatter));
+
 
             });
         }
