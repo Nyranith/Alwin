@@ -61,3 +61,35 @@ stages:
     parameters:
       projectName: ${{ variables.projectName }}
       cliLocation: ${{ variables.cliLocation }}
+      _stages: 
+        - stage: packDotnet
+          jobs:
+            - job: PackDotnet
+              displayName: Pack Dotnet - windows-latest
+              pool:
+                vmImage: windows-latest # read more about custom job pool types at https://aka.ms/obpipelines/yaml/jobs
+
+              variables:
+                - name: artifactVersion
+                  value: ${{ variables.ArtifactVersion }}
+
+              steps:
+                - template: steps/buildDotnetSteps.yml
+                  parameters:
+
+                    projectName: ${{ variables.projectName }}
+                    projects: ${{ variables.projects }}
+                    nugetPackageVersion: ${{ variables.ArtifactVersion }}
+                    projectsToTest: "**/*.csproj"
+                    packageVersions:
+                      - "2.x"
+                      - "5.x"
+                      - "2.0.x"
+                      - "2.1.x"
+                    projectsToPack:
+                      - "$(Build.SourcesDirectory)/src/Alwin.Common/Alwin.Common.csproj"
+                      - "$(Build.SourcesDirectory)/src/Alwin.Tokenizer/Alwin.Tokenizer.csproj"
+                    frameworks:
+                      - netstandard2.0
+                      - netstandard2.1
+                      - net5.0
