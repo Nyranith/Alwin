@@ -76,11 +76,12 @@ stages:
               steps:
                 - template: steps/buildDotnetSteps.yml@pipelines
                   parameters:
-
                     projectName: ${{ variables.projectName }}
                     projects: ${{ variables.projects }}
                     nugetPackageVersion: ${{ variables.ArtifactVersion }}
                     projectsToTest: 
+                      - "**/*.csproj"
+                    projectsToRestore:
                       - "**/*.csproj"
                     packageVersions:
                       - "2.x"
@@ -94,5 +95,3 @@ stages:
                       - netstandard2.0
                       - netstandard2.1
                       - net5.0
-                    projectsToRestore:
-                      - "**/*.csproj"
