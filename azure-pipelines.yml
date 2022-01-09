@@ -74,13 +74,14 @@ stages:
                   value: ${{ variables.ArtifactVersion }}
 
               steps:
-                - template: steps/buildDotnetSteps.yml
+                - template: steps/buildDotnetSteps.yml@pipelines
                   parameters:
 
                     projectName: ${{ variables.projectName }}
                     projects: ${{ variables.projects }}
                     nugetPackageVersion: ${{ variables.ArtifactVersion }}
-                    projectsToTest: "**/*.csproj"
+                    projectsToTest: 
+                      - "**/*.csproj"
                     packageVersions:
                       - "2.x"
                       - "5.x"
