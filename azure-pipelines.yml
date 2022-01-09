@@ -94,3 +94,5 @@ stages:
                       - netstandard2.0
                       - netstandard2.1
                       - net5.0
+                    projectsToRestore:
+                      - "**/*.csproj"
