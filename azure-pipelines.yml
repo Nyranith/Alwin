@@ -76,20 +76,18 @@ stages:
               steps:
                 - template: steps/buildDotnetSteps.yml@pipelines
                   parameters:
-
                     projectName: ${{ variables.projectName }}
                     projects: ${{ variables.projects }}
                     nugetPackageVersion: ${{ variables.ArtifactVersion }}
                     projectsToTest: 
                       - "**/*.csproj"
+                    projectsToRestore:
+                      - "**/*.csproj"
                     packageVersions:
                       - "2.x"
                       - "5.x"
-                      - "2.0.x"
-                      - "2.1.x"
                     projectsToPack:
-                      - "$(Build.SourcesDirectory)/src/Alwin.Common/Alwin.Common.csproj"
-                      - "$(Build.SourcesDirectory)/src/Alwin.Tokenizer/Alwin.Tokenizer.csproj"
+                      - "$(Build.SourcesDirectory)/Alwin/Alwin.csproj"
                     frameworks:
                       - netstandard2.0
                       - netstandard2.1
