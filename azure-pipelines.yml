@@ -18,16 +18,61 @@ parameters:
     type: boolean
     default: false
 
+
 variables:
-  system.debug: ${{ parameters.debug }}
-  BuildConfiguration: Release
-  TargetFramework: net5.0
-  cliLocation: "./src/Alwin/Alwin.csproj"
-  baseFolderName: "kaalsaas.pipelines"
-  projectName: "Alwin"
+  - name: system.debug
+    value: ${{ parameters.debug }}
+
+  - name: BuildConfiguration
+    value: Release
+
+  - name: TargetFramework
+    value: net5.0
+
+  - name: cliLocation
+    value: "./src/Alwin/Alwin.csproj"
+
+  - name: projectName
+    value: "Alwin"
+
+  - name: baseFolderName
+    value: "kaalsaas.pipelines"
+
+  - name: baseFolderName
+    value: "kaalsaas.pipelines"
+
+  - name: Major
+    value: 1
+
+  - name: Minor
+    value: 2
+
+  - name: ArtifactCounter
+    value: $[counter(format('{0}.{1}', variables['Major'], variables['Minor']),0)]
+
+  - name: ArtifactVersion
+    value: $(Major).$(Minor).$(ArtifactCounter)
+
+  - name: projects
+    value: "**/*.csproj"
 
 stages:
   - template: buildCli.yml@pipelines
     parameters:
       projectName: ${{ variables.projectName }}
       cliLocation: ${{ variables.cliLocation }}
+
+  - template: packDotnet.yml@pipelines
+    parameters:
+      projectName: ${{ variables.projectName }}
+      projects: ${{ variables.projects }}
+
+      nugetPackageVersion: ${{ variables.ArtifactVersion }}
+      packageVersions:
+        - "2.x"
+        - "5.x"
+      projectsToPack:
+        - "$(Build.SourcesDirectory)/Alwin/Alwin.csproj"
+      frameworks:
+        - netcoreapp2.1
+        - netcoreapp3.0
