@@ -67,7 +67,7 @@ stages:
             - job: PackDotnet
               displayName: Pack Dotnet - windows-latest
               pool:
-                vmImage: windows-latest # read more about custom job pool types at https://aka.ms/obpipelines/yaml/jobs
+                vmImage: windows-latest 
 
               variables:
                 - name: artifactVersion
