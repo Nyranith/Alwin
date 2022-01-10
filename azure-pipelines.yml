@@ -87,7 +87,7 @@ stages:
                       - "2.x"
                       - "5.x"
                     projectsToPack:
-                      - "$(Build.SourcesDirectory)/Alwin/Alwin.csproj"
+                      - "$(Build.SourcesDirectory)/src/Alwin/Alwin.csproj"
                     frameworks:
                       - netstandard2.0
                       - netstandard2.1
